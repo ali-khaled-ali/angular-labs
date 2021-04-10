@@ -1,0 +1,50 @@
+<!-- *ngIf = "!isLogged; else welcomeTemplate " -->
+<div class="row p-3" >
+    <div class="input-group mb-3">
+        <input type="text" 
+        class="form-control" 
+        placeholder="" 
+        [(ngModel)]="userName"
+        (input) = "onInput()"
+        >
+    
+        <div class="input-group-append">
+            
+            <input type="button" 
+            class="btn btn-outline-success" 
+            value="login"
+            (click)='logged()'
+            >
+    
+        </div> 
+    </div>
+
+</div>
+
+<div class="container" *ngIf ="isLogged" >
+    <div class="col-md-10">
+        <span> welcome {{ userNameDisplay }}</span>
+    
+    </div>
+</div>
+
+
+
+
+<ng-template #welcomeTemplate>
+
+
+    
+        <div class="container" >
+            <div class="col-md-10">
+                <span> welcome {{ userName }}</span>
+            <input type="button" 
+            class="btn btn-outline-danger float-right" 
+            value="log out"
+            (click)='logout()'
+            >  
+            </div>
+        </div>
+    
+
+</ng-template>

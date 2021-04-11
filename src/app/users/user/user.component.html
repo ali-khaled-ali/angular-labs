@@ -1,0 +1,25 @@
+<li class="list-group-item" (click) = "sendMessage()">
+       
+       
+    <div *ngIf="user.age > 18 || isLoggedIn; else hiddentemplate">
+
+
+        <span [ngSwitch]="user.job">
+            <i *ngSwitchCase = "'eng'" class="fa fa-user"></i>
+            <i *ngSwitchCase = "'cop'" class="fa fa-user-md"></i>
+          
+
+        </span>
+        {{ i + 1 }} : {{ user.name }}
+
+    </div>
+
+</li>
+
+
+<ng-template #hiddentemplate >
+
+
+    <p appHighlight>i'm young</p>
+
+</ng-template>

@@ -1,6 +1,13 @@
-<ul class="list-group">
-    <li class="list-group-item" *ngFor = "let user of users">
-        {{ user.name }}
-   </li>
+<p>
+    {{ message }}
 
+</p> 
+<ul class="list-group">
+    
+<app-user  *ngFor = "let currentUser of users; let i = index" [user]="currentUser" [i] = "i"
+(messageEvent)="recieveMessage($event)"
+>
+    
+</app-user>
 </ul>
+

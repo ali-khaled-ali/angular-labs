@@ -8,6 +8,10 @@ import { HighlightDirective } from './highlight.directive';
 import { UsersComponent } from './users/users.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserComponent } from './users/user/user.component';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,16 @@ import { UserComponent } from './users/user/user.component';
     HighlightDirective,
     UsersComponent,
     UserComponent,
+    HeaderComponent,
+    HomeComponent,
+    AboutComponent,
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

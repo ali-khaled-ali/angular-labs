@@ -1,6 +1,7 @@
 import { Component,Input,Output,EventEmitter,OnInit, OnDestroy } from '@angular/core';
 import { AuthService} from '../../auth.service'
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class UserComponent implements OnInit, OnDestroy{
 
   private _authSub: Subscription;
-  constructor(private _authService: AuthService){
+  constructor(private _authService: AuthService,private _router:Router){
    
   }
 
@@ -30,6 +31,16 @@ export class UserComponent implements OnInit, OnDestroy{
 
 
     this.messageEvent.emit(`you have clicked on ${this.user.name}`)
+    this._router.navigate(['/users'],{
+      queryParams: {age: this.user.age,
+      name: this.user.name
+    },
+    queryParamsHandling: 'merge'
+    
+  }
+    
+    
+    );
   }
 
   ngOnDestroy(){

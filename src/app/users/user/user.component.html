@@ -1,5 +1,10 @@
-<li class="list-group-item" (click) = "sendMessage()">
-       
+<li class="list-group-item" (click) = "sendMessage()"
+
+>
+
+<!-- [routerLink]="['/users']"
+[queryParams]="{age: user.age}"
+queryParamsHandling = "merge"   -->
        
     <div *ngIf="user.age > 18 || isLoggedIn; else hiddentemplate">
 

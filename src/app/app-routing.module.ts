@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule,Routes } from '@angular/router'
+import { PreloadAllModules, RouterModule,Routes } from '@angular/router'
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
+import { CourseDetailsComponent } from './courses/course-details/course-details.component';
  
 const routes : Routes = [
 {
@@ -30,14 +31,17 @@ const routes : Routes = [
 { path: 'courses',
  loadChildren:
   () => import('./courses/courses.module')
-  .then(m => m.CoursesModule) }
+  .then(m => m.CoursesModule) },
+  
 
 ]
 
 @NgModule({
   
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,{
+      //preloadingStrategy: PreloadAllModules
+    })
   ],
   exports:[
 

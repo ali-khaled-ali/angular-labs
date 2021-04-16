@@ -1,24 +1,38 @@
-<form action="">
+<form #courseForm= "ngForm" (ngSubmit)="onSubmit(courseForm)">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="title">Title</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="title" #titleRef="ngModel" ngModel required>
+            <div class="alert alert-danger p-1 mt-1"
+            *ngIf="titleRef.dirty && titleRef.invalid">
+                Tiltle is required
+            </div>
         </div>
-        <br>
+        
         <div class="form-group col-md-6">
             <label for="instructor">instructor</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="instructor" #instructorRef="ngModel" ngModel required>
+            <div class="alert alert-danger p-1 mt-1"
+            *ngIf="instructorRef.dirty && instructorRef.invalid">
+                instructor is required
+            </div>
         </div>
 
        
 
         <div class="form-group col-md-6">
             <div class="form-check">
-                <input type="checkbox"class = "form-check-input" name="isAvailable" id="isAvailable">
+                <input type="checkbox"class = "form-check-input" name="isAvailable" id="isAvailable" ngModel >
                 <label for="isAvailable" class = "form-check-label">Available</label>
             </div>
         </div>
 
     </div>
-    <button type="submit" class="btn btn-outline-success">Save</button>
+    <button type="submit" class="btn"
+    [ngClass]="{
+        'btn-outline-success': courseForm.form.valid,
+        'btn-outline-default': courseForm.form.inc
+    }"
+    [disabled]="courseForm.form.invalid">
+    Save</button>
 </form>

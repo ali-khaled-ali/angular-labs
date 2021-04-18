@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Course } from '../models/course.model';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-course-details',
@@ -8,21 +10,26 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./course-details.component.scss']
 })
 export class CourseDetailsComponent implements OnInit, OnDestroy {
+  private _routeParamsSub: Subscription;
+  course: Course;
 
-  id;
-  private _routeParamSub: Subscription;
-  constructor(private _route: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute,
+    private _coursesService: CoursesService
+  ) { }
 
   ngOnInit(): void {
-    this._route.paramMap.subscribe( paramMap => {
-      console.log(paramMap);
-      this.id = paramMap.has('id')? paramMap.get('id') : null
-      console.log(this.id);
-    })
+    this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
+      if (paramMap.has('id')) {
+        this._coursesService.getCourseById(paramMap.get('id')).subscribe((res: any) => {
+          this.course = res.data;
+        });
+      }
+    });
   }
 
-  ngOnDestroy(): void{
-    this._routeParamSub.unsubscribe();   
+
+  ngOnDestroy(): void {
+    this._routeParamsSub.unsubscribe();
   }
 
 }

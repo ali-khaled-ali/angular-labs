@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CourseFormComponent } from './course-form/course-form.component';
+import { CourseReactiveFormComponent } from './course-reactive-form/course-reactive-form.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CoursesComponent } from './courses.component';
 
@@ -19,7 +20,7 @@ const routes: Routes = [
       
 
       {
-        path: 'new', component: CourseFormComponent
+        path: 'new', component: CourseReactiveFormComponent
       },
 
       {
